@@ -332,7 +332,7 @@ nmap <C-n> <Plug>yankstack_substitute_newer_paste
 let g:ctrlp_map = '<C-f>'
 map <leader>j :CtrlP<cr>
 map <C-b> :CtrlPBuffer<cr>
-
+```
 [vim-snipmate](https://github.com/garbas/vim-snipmate) mappings to autocomplete via snippets:
 ```vim
 ino <C-j> <C-r>=snipMate#TriggerSnippet()<cr>
@@ -348,8 +348,7 @@ au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 nmap <silent> <leader>a <Plug>(ale_next_wrap)
 ```
 [vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) the default mapping to toggle the plugin is (`<leader>ig`)
-
-    You can also use the following commands inside Vim:
+You can also use the following commands inside Vim:
     :IndentGuidesEnable
     :IndentGuidesDisable
     :IndentGuidesToggle

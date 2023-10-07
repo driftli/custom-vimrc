@@ -65,9 +65,15 @@ editorconfig-vim https://github.com/editorconfig/editorconfig-vim
 dracula https://github.com/dracula/vim
 """.strip()
 
+MY_PLUGINS = """
+taglist.vim https://github.com/vim-scripts/taglist.vim
+a.vim https://github.com/vim-scripts/a.vim
+""".strip()
+
 GITHUB_ZIP = "%s/archive/master.zip"
 
 SOURCE_DIR = path.join(path.dirname(__file__), "sources_non_forked")
+CUSTOM_DIR = path.join(path.dirname(__file__), "my_plugins")
 
 
 def download_extract_replace(plugin_name, zip_path, temp_dir, source_dir):
@@ -101,6 +107,15 @@ def update(plugin):
         print("Could not update {}. Error was: {}".format(name, str(exp)))
 
 
+def my_update(plugin):
+    name, github_url = plugin.split(" ")
+    zip_path = GITHUB_ZIP % github_url
+    try:
+        download_extract_replace(name, zip_path, temp_directory, CUSTOM_DIR)
+    except Exception as exp:
+        print("Could not update {}. Error was: {}".format(name, str(exp)))
+
+
 if __name__ == "__main__":
     temp_directory = tempfile.mkdtemp()
 
@@ -108,7 +123,9 @@ if __name__ == "__main__":
         if futures:
             with futures.ThreadPoolExecutor(16) as executor:
                 executor.map(update, PLUGINS.splitlines())
+                executor.map(my_update, MY_PLUGINS.splitlines())
         else:
             [update(x) for x in PLUGINS.splitlines()]
+            [my_update(x) for x in MY_PLUGINS.splitlines()]
     finally:
         shutil.rmtree(temp_directory)
