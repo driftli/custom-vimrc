@@ -22,14 +22,14 @@ call pathogen#helptags()
 
 
 """"""""""""""""""""""""""""""
-" => bufExplorer plugin
+" => BufExplorer plugin
 """"""""""""""""""""""""""""""
 let g:bufExplorerDefaultHelp=0
 let g:bufExplorerDisableDefaultKeyMapping=1
 let g:bufExplorerShowRelativePath=1
 let g:bufExplorerFindActive=1
 let g:bufExplorerSortBy='name'
-map <leader>o :ToggleBufExplorer<cr>
+noremap <leader>b :ToggleBufExplorer<cr>
 
 
 """"""""""""""""""""""""""""""
@@ -42,25 +42,25 @@ nmap <C-n> <Plug>yankstack_substitute_newer_paste
 
 
 """"""""""""""""""""""""""""""
-" => MRU plugin
+" => CTRL-P (including MRU)
 """"""""""""""""""""""""""""""
 let MRU_Max_Entries = 400
-map <leader>f :MRU<CR>
-
-
-""""""""""""""""""""""""""""""
-" => CTRL-P
-""""""""""""""""""""""""""""""
-let g:ctrlp_working_path_mode = 0
+noremap <leader>r :MRU<CR>
 
 " Quickly find and open a file in the current working directory
-let g:ctrlp_map = '<C-j>'
-map <leader>j :CtrlP<cr>
+let g:ctrlp_map = '<c-o>'
+noremap <leader>o :CtrlP<cr>
 
 " Quickly find and open a buffer
-map <leader>b :CtrlPBuffer<cr>
+" noremap <leader>b :CtrlPBuffer<cr>
 
-let g:ctrlp_match_window = 'bottom,order:btt,min:1,max:20,results:20'
+" When invoked without an explicit starting directory, set it according to this
+let g:ctrlp_working_path_mode = 'ra'
+
+" Set the default to search by file name (otherwise full path)
+let g:ctrlp_by_filename = 1
+
+let g:ctrlp_match_window = 'bottom,order:ttb,min:1,max:20,results:20'
 let g:ctrlp_custom_ignore = {
   \ 'dir':  '\v[\/]\.(git|svn|DS_Store)$',
   \ 'file': '\v\.(exe|so|dll|pyc|swp)$',
@@ -90,15 +90,23 @@ set grepprg=/bin/grep\ -nH
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Nerd Tree
+" => NERDTree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:NERDTreeWinPos = "right"
 let NERDTreeShowHidden=0
-let NERDTreeIgnore = ['\.pyc$', '__pycache__']
+let NERDTreeShowLineNumbers=0
+let NERDTreeIgnore = ['\.pyc', '\.swp', '\~$', '__pycache__']
 let g:NERDTreeWinSize=35
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark<Space>
 map <leader>nf :NERDTreeFind<cr>
+
+
+""""""""""""""""""""""""""""""
+" => NERDTree-Tabs (make nerdtree feel like a true panel, independent of tabs)
+""""""""""""""""""""""""""""""
+let g:nerdtree_tabs_open_on_console_startup=1
+nnoremap <leader>n :NERDTreeTabsToggle<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -197,3 +205,49 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*']
 " Copy the link to the line of a Git repository to the clipboard
 nnoremap <leader>v :.GBrowse!<CR>
 xnoremap <leader>v :GBrowse!<CR>
+
+
+""""""""""""""""""""""""""""""
+" => Translater plugin
+""""""""""""""""""""""""""""""
+" Echo translation in the cmdline
+nnoremap <silent> <leader>tt <plug>Translate
+vnoremap <silent> <leader>tt <plug>TranslateV
+" Display translation in a window
+nnoremap <silent> <leader>tw <plug>TranslateW
+vnoremap <silent> <leader>tw <plug>TranslateWV
+
+
+""""""""""""""""""""""""""""""
+" => Tagbar plugin
+""""""""""""""""""""""""""""""
+" Set tagbar window toggle
+nnoremap <leader>s :TagbarToggle<CR>
+" Custom ctags path
+let g:tagbar_ctags_bin="/usr/local/bin/ctags"
+" Set tagbar window vertically split and appear on the right
+let g:tagbar_position="botright vertical"
+" Don't show the short help but show the blank lines
+let g:tagbar_compact=2
+" Exit vim if only the taglist window and nerdtree window are opened
+let g:tagbar_autoclose_netrw=1
+
+
+""""""""""""""""""""""""""""""
+" => Vim-go
+""""""""""""""""""""""""""""""
+let g:go_fmt_command = "goimports"
+let g:go_autodetect_gopath = 1
+let g:go_list_type = "quickfix"
+
+let g:go_version_warning = 1
+let g:go_highlight_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_generate_tags = 1
+
+let g:godef_split=2
