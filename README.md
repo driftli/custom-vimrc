@@ -111,14 +111,13 @@ I recommend reading the docs of these plugins to understand them better. Each pl
 
 ## Included color schemes
 
-Type `:colorscheme <Tab>` to try out color schemes on the fly or add the command to **my_configs.vim** (see below), for example `colorscheme pyte`.
+Type `:colorscheme <Tab>` to try out color schemes on the fly or add the command to **my_configs.vim** (see below), for example `colorscheme peaksea`.
 
 * [peaksea](https://github.com/vim-scripts/peaksea): The default
 * [dracula](https://github.com/dracula/vim)
 * [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
 * [vim-irblack](https://github.com/wgibbs/vim-irblack)
-* [mayansmoke](https://github.com/vim-scripts/mayansmoke)
-* [vim-pyte](https://github.com/therubymug/vim-pyte)
+* [gruvbox](https://github.com/morhetz/gruvbox)
 
 
 ## Included modes
@@ -158,7 +157,7 @@ You can also install plugins without any plugin manager (vim 8+ required):
 
 ## Key Mappings
 
-The [leader](http://learnvimscriptthehardway.stevelosh.com/chapters/06.html#leader) is `,`, so whenever you see `<leader>` it means `,`.
+The [leader](http://learnvimscriptthehardway.stevelosh.com/chapters/06.html#leader) is `;`, so whenever you see `<leader>` it means `;`.
 
 
 ### Normal mode mappings
@@ -170,23 +169,29 @@ nmap <leader>w :w!<cr>
 ```
 
 Map `<Space>` to `/` (search) and `<Ctrl>+<Space>` to `?` (backwards search):
+
 ```vim	
 map <space> /
 map <C-space> ?
 ```
+
 Disable highlights when you press `<leader><cr>`:
 
 ```vim
 map <silent> <leader><cr> :noh<cr>
 ```
+
 Smart way to move between windows (`<ctrl>j` etc.):
+
 ```vim	
 map <C-j> <C-W>j
 map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 ```
+
 Closing of the current buffer(s) (`<leader>bd` and (`<leader>ba`)):
+
 ```vim	
 " Close current buffer
 map <leader>bd :Bclose<cr>
@@ -194,7 +199,9 @@ map <leader>bd :Bclose<cr>
 " Close all buffers
 map <leader>ba :1,1000 bd!<cr>
 ```	
+
 Useful mappings for managing tabs:
+
 ```vim	
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
@@ -205,19 +212,27 @@ map <leader>tm :tabmove
 " Super useful when editing files in the same directory
 map <leader>te :tabedit <C-r>=escape(expand("%:p:h"), " ")<cr>/
 ```	
+
 Switch [CWD](http://vim.wikia.com/wiki/Set_working_directory_to_the_current_file) to the directory of the open buffer:
+
 ```vim	
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 ```	
+
 Open `ack.vim` for fast search:
+
 ```vim	
 map <leader>g :Ack 
 ```
+
 Quickly open a buffer for scripbble:
+
 ```vim	
 map <leader>q :e ~/buffer<cr>
 ```
+
 Toggle paste mode on and off:
+
 ```vim	
 map <leader>pp :setlocal paste!<cr>
 ```
@@ -225,19 +240,26 @@ map <leader>pp :setlocal paste!<cr>
 ### Visual mode mappings
 
 Visual mode pressing `*` or `#` searches for the current selection:
+
 ```vim
 vnoremap <silent> * :call VisualSelection('f')<CR>
 vnoremap <silent> # :call VisualSelection('b')<CR>
 ```
+
 When you press gv you `Ack.vim` after the selected text:
+
 ```vim
 vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 ```
+
 When you press `<leader>r` you can search and replace the selected text:
+
 ```vim
 vnoremap <silent> <leader>r :call VisualSelection('replace')<CR>
 ```
+
 Surround the visual selection in parenthesis/brackets/etc.:
+
 ```vim
 vnoremap $1 <esc>`>a)<esc>`<i(<esc>
 vnoremap $2 <esc>`>a]<esc>`<i[<esc>
@@ -250,6 +272,7 @@ vnoremap $e <esc>`>a`<esc>`<i`<esc>
 ### Insert mode mappings
 
 Quickly insert parenthesis/brackets/etc.:
+
 ```vim
 inoremap $1 ()<esc>i
 inoremap $2 []<esc>i
@@ -259,7 +282,9 @@ inoremap $q ''<esc>i
 inoremap $e ""<esc>i
 inoremap $t <><esc>i
 ```
+
 Insert the current date and time (useful for timestamps):
+
 ```vim
 iab xdate <C-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 ```
@@ -267,10 +292,13 @@ iab xdate <C-r>=strftime("%d/%m/%y %H:%M:%S")<cr>
 ### Command line mappings
 
 $q is super useful when browsing on the command line. It deletes everything until the last slash:
+
 ```vim
 cno $q <C-\>eDeleteTillSlash()<cr>
 ```
+
 Bash like keys for the command line:
+
 ```vim
 cnoremap <C-A>		<Home>
 cnoremap <C-E>		<End>
@@ -287,10 +315,13 @@ Write the file as sudo (works only on Unix). Super useful when you open a file a
 ### Plugin related mappings
 
 Open [bufexplorer](https://github.com/vim-scripts/bufexplorer.zip) to see and manage the current buffers (`<leader>o`):
+
 ```vim
 map <leader>o :BufExplorer<cr>
 ```
+
 Open [ctrlp.vim](https://github.com/kien/ctrlp.vim) plugin to quickly find a file or a buffer (`<leader>j` or `<ctrl>f`):
+
 ```vim
 " Quickly find and open a file in the CWD
 let g:ctrlp_map = '<C-f>'
@@ -301,17 +332,23 @@ map <leader>f :MRU<CR>
 " Quickly find and open a buffer
 map <leader>b :CtrlPBuffer<cr>
 ```
+
 [NERD Tree](https://github.com/preservim/nerdtree) mappings:
+
 ```vim
 map <leader>nn :NERDTreeToggle<cr>
 map <leader>nb :NERDTreeFromBookmark 
 map <leader>nf :NERDTreeFind<cr>
 ```
+
 [goyo.vim](https://github.com/junegunn/goyo.vim) and [vim-zenroom2](https://github.com/amix/vim-zenroom2) lets you only focus on one thing at a time. It removes all the distractions and centers the content. It has a special look when editing Markdown, reStructuredText and textfiles. It only has one mapping. (`<leader>z`)
+
 ```vim
 map <leader>z :Goyo<cr>
 ```
+
 [vim-multiple-cursors](https://github.com/terryma/vim-multiple-cursors) mappings to manage multiple cursors at once:
+
 ```vim
 let g:multi_cursor_start_word_key      = '<C-s>'
 let g:multi_cursor_select_all_word_key = '<A-s>'
@@ -322,54 +359,73 @@ let g:multi_cursor_prev_key            = '<C-p>'
 let g:multi_cursor_skip_key            = '<C-x>'
 let g:multi_cursor_quit_key            = '<Esc>'
 ```
+
 [vim-yankstack](https://github.com/maxbrunsfeld/vim-yankstack) mappings to manage the kill-ring (clipboard):
+
 ```vim
 nmap <C-p> <Plug>yankstack_substitute_older_paste
 nmap <C-n> <Plug>yankstack_substitute_newer_paste
 ```
+
 [ctrl-p](https://github.com/ctrlpvim/ctrlp.vim) mappings to easily find and open a file, buffer, etc.:
+
 ```vim
 let g:ctrlp_map = '<C-f>'
 map <leader>j :CtrlP<cr>
 map <C-b> :CtrlPBuffer<cr>
 ```
+
 [vim-snipmate](https://github.com/garbas/vim-snipmate) mappings to autocomplete via snippets:
+
 ```vim
 ino <C-j> <C-r>=snipMate#TriggerSnippet()<cr>
 snor <C-j> <esc>i<right><C-r>=snipMate#TriggerSnippet()<cr>
 ```
+
 [vim-surround](https://github.com/tpope/vim-surround) mappings to easily surround a string with `_()` gettext annotation:
+
 ```vim
 vmap Si S(i_<esc>f)
 au FileType mako vmap Si S"i${ _(<esc>2f"a) }<esc>
 ```
+
 [ale](https://github.com/dense-analysis/ale) to easily go to the next Ale syntax/lint error:
+
 ```vim
 nmap <silent> <leader>a <Plug>(ale_next_wrap)
 ```
+
 [vim-indent-guides](https://github.com/nathanaelkane/vim-indent-guides) the default mapping to toggle the plugin is (`<leader>ig`)
+
 You can also use the following commands inside Vim:
     :IndentGuidesEnable
     :IndentGuidesDisable
     :IndentGuidesToggle
 
 [vim-fugitive](https://github.com/tpope/vim-fugitive) to copy the link to the line of a Git repository to the clipboard:
+
 ```vim
 nnoremap <leader>v :.GBrowse!<CR>
 xnoremap <leader>v :'<'>GBrowse!<CR>
 ```
+
 ### Spell checking
+
 Pressing `<leader>ss` will toggle spell checking:
+
 ```vim
 map <leader>ss :setlocal spell!<cr>
 ```
+
 Shortcuts using `<leader>` instead of special characters:
+
 ```vim
 map <leader>sn ]s
 map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 ```
+
 ### Running Code
 To run code directly from vim, press `F5`. The currently open code will execute without you having to type anything.
 
@@ -388,6 +444,7 @@ To go to the previous search results do:
 `<leader>p`
 
 Cope mappings:
+
 ```vim
 map <leader>cc :botright cope<cr>
 map <leader>co ggVGy:tabnew<cr>:set syntax=qf<cr>pgg

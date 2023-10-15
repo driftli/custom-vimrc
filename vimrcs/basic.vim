@@ -220,6 +220,12 @@ map <C-k> <C-W>k
 map <C-h> <C-W>h
 map <C-l> <C-W>l
 
+" Smart way to adjust window size
+nnoremap <S-Up> :resize +1<CR>  
+nnoremap <S-Down> :resize -1<CR>  
+nnoremap <S-Right> :vertical resize +1<CR>  
+nnoremap <S-Left> :vertical resize -1<CR>
+
 " Close the current buffer
 map <leader>bd :Bclose<cr>:tabclose<cr>gT
 
