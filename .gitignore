@@ -1,6 +1,6 @@
 temp_dirs/undodir/*
-sources_non_forked/ack.vim/.netrwhist
 temp_dirs/yankring_history_v2.txt
+sources_non_forked/vim-ack/.netrwhist
 sources_non_forked/vim-tlib/doc/tags
 sources_non_forked/vim-ctrlp/doc/tags*
 my_configs.vim
