@@ -89,6 +89,14 @@ set grepprg=/bin/grep\ -nH
 
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Indent Guides
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:indent_guides_default_mapping = 0
+let g:indent_guides_guide_size = 1
+nmap <silent> <leader>ig <plug>IndentGuidesToggle
+
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => NERDTree
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 

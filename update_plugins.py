@@ -25,19 +25,18 @@ vim-syntax-nginx https://github.com/chr4/nginx.vim
 vim-syntax-less https://github.com/groenewege/vim-less
 vim-syntax-javascript https://github.com/pangloss/vim-javascript
 vim-syntax-typescript https://github.com/leafgarland/typescript-vim
-auto-pairs https://github.com/jiangmiao/auto-pairs
-ale https://github.com/dense-analysis/ale
+vim-auto-pairs https://github.com/jiangmiao/auto-pairs
+vim-ale https://github.com/dense-analysis/ale
 vim-yankstack https://github.com/maxbrunsfeld/vim-yankstack
-tabular https://github.com/godlygeek/tabular
+vim-tabular https://github.com/godlygeek/tabular
 vim-ack https://github.com/mileszs/ack.vim
-bufexplorer https://github.com/jlanzarotta/bufexplorer
+vim-bufexplorer https://github.com/jlanzarotta/bufexplorer
 vim-ctrlp https://github.com/ctrlpvim/ctrlp.vim
 vim-nerdtree https://github.com/preservim/nerdtree
 vim-nerdtree-tabs https://github.com/jistr/vim-nerdtree-tabs
 open_file_under_cursor.vim https://github.com/amix/open_file_under_cursor.vim
 vim-tlib https://github.com/tomtom/tlib_vim
 vim-addon-mw-utils https://github.com/MarcWeber/vim-addon-mw-utils
-vim-indent-object https://github.com/michaeljsmith/vim-indent-object
 vim-snipmate https://github.com/garbas/vim-snipmate
 vim-snippets https://github.com/honza/vim-snippets
 vim-surround https://github.com/tpope/vim-surround
@@ -45,7 +44,6 @@ vim-lastplace https://github.com/farmergreg/vim-lastplace
 vim-expand-region https://github.com/terryma/vim-expand-region
 vim-multiple-cursors https://github.com/terryma/vim-multiple-cursors
 vim-fugitive https://github.com/tpope/vim-fugitive
-vim-rhubarb https://github.com/tpope/vim-rhubarb
 vim-goyo https://github.com/junegunn/goyo.vim
 vim-repeat https://github.com/tpope/vim-repeat
 vim-commentary https://github.com/tpope/vim-commentary
@@ -59,12 +57,13 @@ vim-python-pep8-indent https://github.com/Vimjas/vim-python-pep8-indent
 vim-indent-guides https://github.com/nathanaelkane/vim-indent-guides
 vim-mru https://github.com/yegappan/mru
 vim-editorconfig https://github.com/editorconfig/editorconfig-vim
-a.vim https://github.com/vim-scripts/a.vim
+vim-a https://github.com/vim-scripts/a.vim
 vim-translator https://github.com/voldikss/vim-translator
-tagbar https://github.com/preservim/tagbar
+vim-tagbar https://github.com/preservim/tagbar
 vim-go https://github.com/fatih/vim-go
 vim-smoothie https://github.com/psliwka/vim-smoothie
-supertab https://github.com/ervandew/supertab
+vim-supertab https://github.com/ervandew/supertab
+vim-deoplete https://github.com/Shougo/deoplete.nvim
 """.strip()
 
 GITHUB_ZIP = "%s/archive/master.zip"
